@@ -86,7 +86,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
-export PATH="/home/samuel/.local/share/nvim/mason/bin:/home/samuel/.local/scripts:$PATH"
+export PATH="/home/samuel/.local/share/nvim/mason/bin:/home/samuel/.local/scripts:/home/samuel/.asdf/shims:$PATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8

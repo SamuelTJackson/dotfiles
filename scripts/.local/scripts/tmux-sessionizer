@@ -1,14 +1,18 @@
 #!/usr/bin/env bash
 
-CACHE_FILE="/tmp/tmux_sessionizer_cache"
+static_projects=(
+ "$HOME/.config/nvim"
+)
 
-selected=$(find \
+dynamic_projects=$(find \
   ~/team-internet \
   ~/.config/nvim \
   ~/personal \
   ~/GolandProjects \
-   -type d -not -path '*/node_modules/*' -exec test -e '{}/.git' ';' -print -prune | fzf
+  -type d -not -path '*/node_modules/*' -exec test -e '{}/.git' ';' -print -prune
 )
+
+selected=$(printf "%s\n" "${static_projects[@]}" $dynamic_projects | fzf)
 
 if [[ -z $selected ]]; then
     exit 0
