@@ -305,7 +305,7 @@ poll-interval = 5
 time-format = %H:%M
 
 format-charging = <label-charging>
-format-charging-prefix = ""
+format-charging-prefix = ""
 format-charging-prefix-background = ${colors.red}
 format-charging-background = ${colors.gray-ligth}
 format-charging-foreground = ${colors.bg}
