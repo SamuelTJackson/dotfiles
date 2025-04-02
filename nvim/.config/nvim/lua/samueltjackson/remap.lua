@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+
 vim.keymap.set("i", "jj", "<esc>")
 vim.keymap.set("n", "<leader>nt", ":NvimTreeToggle<CR>")
 vim.keymap.set("n", "<leader>jb", "<C-o>")
@@ -30,9 +31,12 @@ vim.keymap.set("n", "<leader>w", ":w<CR>")
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set('n', '<leader>pu', '<C-b>')
-vim.keymap.set('n', '<leader>pd', '<C-f>')
+
+vim.keymap.set('n', '<leader>k', '<C-b>') -- Page Up
+vim.keymap.set('n', '<leader>j', '<C-f>') -- Page Down

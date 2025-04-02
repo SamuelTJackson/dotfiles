@@ -4,6 +4,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export EDITOR=nvim
 export TERMINAL=kitty
 export XCOMPOSEFILE=/tmp/compose
+export VISUAL='nvim'
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -121,7 +122,6 @@ alias open='xdg-open'
 alias wlan='nmtui'
 alias monitor='arandr'
 alias awslocal="AWS_ACCESS_KEY_ID=test AWS_SECRET_ACCESS_KEY=test AWS_DEFAULT_REGION=${DEFAULT_REGION:-eu-central-1} aws --endpoint-url=http://${LOCALSTACK_HOST:-localhost}:4566"
-source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 alias gitclean="git fetch -p && for branch in \$(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '\$2 == \"[gone]\" {sub(\"refs/heads/\", \"\", \$1); print \$1}'); do git branch -D \$branch; done"
 
 
@@ -138,3 +138,5 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 setopt appendhistory
+
+export GOPRIVATE=github.com/encentive-energy

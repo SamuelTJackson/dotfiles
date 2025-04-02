@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
 
 static_projects=(
- "$HOME/.config/nvim"
+    "$HOME/.config/nvim"
+    "$HOME/notes"
 )
 
-dynamic_projects=$(find \
-  ~/team-internet \
-  ~/.config/nvim \
-  ~/personal \
-  ~/GolandProjects \
-  -type d -not -path '*/node_modules/*' -exec test -e '{}/.git' ';' -print -prune
+dynamic_projects=$(
+    find \
+        ~/encentive \
+        ~/legacy \
+        ~/.config/nvim \
+        ~/personal \
+        ~/GolandProjects \
+        -type d -not -path '*/node_modules/*' -exec test -e '{}/.git' ';' -print -prune
 )
 
 selected=$(printf "%s\n" "${static_projects[@]}" $dynamic_projects | fzf)
@@ -26,7 +29,7 @@ if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
+if ! tmux has-session -t=$selected_name 2>/dev/null; then
     tmux new-session -ds $selected_name -c $selected
 fi
 

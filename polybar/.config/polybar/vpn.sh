@@ -1,27 +1,27 @@
 #!/bin/bash
 
-service="Ti"
+service="encentive"
 
 if [ ! "$(nmcli c show --active | grep ${service})" ]; then
-	echo '%{F#000000}'
+    echo '%{F#000000}'
 else
-	echo '%{F#98971a}'
+    echo '%{F#98971a}'
 fi
 
 enable() {
-	nmcli c up "$service"
+    nmcli c up "$service"
 }
 
 disable() {
-	nmcli c down "$service"
+    nmcli c down "$service"
 }
 
 toggle() {
-	if [ ! "$(nmcli c show --active | grep ${service})" ]; then
-		nmcli c up "$service"
-	else
-		nmcli c down "$service"
-	fi
+    if [ ! "$(nmcli c show --active | grep ${service})" ]; then
+        nmcli c up "$service"
+    else
+        nmcli c down "$service"
+    fi
 }
 
 "$@"
