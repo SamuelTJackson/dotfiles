@@ -55,6 +55,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym $mod+Ctrl+a exec pavucontrol
 
 bindsym $mod+o exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+bindsym $mod+l exec text-helper
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -245,3 +246,4 @@ for_window [class="pavucontrol" instance="pavucontrol"] floating enable, resize 
 for_window [class="Blueman-manager" instance="blueman-manager"] floating enable, resize set 800px 500px, move position center
 for_window [class="dde-file-manager" instance="dde-file-manager"] floating enable, resize set 1200px 500px, move position center
 for_window [class="Arandr" instance="arandr"] floating enable, resize set 1920 400px, move position center
+for_window [class="Text Helper"] floating enable, resize set 800 400px, move position center

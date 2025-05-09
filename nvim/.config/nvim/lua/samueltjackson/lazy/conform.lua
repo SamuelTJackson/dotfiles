@@ -1,6 +1,6 @@
 local formatters = {
     lua = { "stylua" },
-    go = { "goimports", "gofumpt" },
+    go = { "golines", "goimports" },
     terraform = { "terraform_fmt" },
     ["terraform-vars"] = { "terraform_fmt" },
     tf = { "terraform_fmt" },
@@ -39,5 +39,11 @@ return {
             timeout_ms = 500,
             lsp_fallback = true,
         },
+        formatters = {
+            golines = {
+                args = { "-m", 140, "--base-formatter", "gofmt" }
+            }
+
+        }
     },
 }

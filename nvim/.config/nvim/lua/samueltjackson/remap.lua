@@ -24,7 +24,9 @@ vim.keymap.set("n", "<c-j>", ":wincmd j<CR>", { silent = true })
 vim.keymap.set("n", "<c-h>", ":wincmd h<CR>", { silent = true })
 vim.keymap.set("n", "<c-l>", ":wincmd l<CR>", { silent = true })
 
-vim.keymap.set("n", "<leader>q", ":cclose<CR>")
+vim.keymap.set("n", "<leader>qc", ":cclose<CR>")
+vim.keymap.set("n", "<leader>qn", ":cnext<CR>", { desc = "Next item in quickfix list" })
+vim.keymap.set("n", "<leader>qp", ":cprev<CR>", { desc = "Previous item in quickfix list" })
 vim.keymap.set("n", "<leader>c", ":GoTermClose<CR>")
 
 vim.keymap.set("n", "<leader>w", ":w<CR>")
@@ -38,5 +40,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set('n', '<leader>k', '<C-b>') -- Page Up
-vim.keymap.set('n', '<leader>j', '<C-f>') -- Page Down
+vim.keymap.set('n', '<leader>pu', '<C-b>') -- Page Up
+vim.keymap.set('n', '<leader>pd', '<C-f>') -- Page Down
+
+vim.keymap.set('n', '<Leader>xc', ":call setreg('+', expand('%:.') .. ':' .. line('.'))<CR>")

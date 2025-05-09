@@ -1,19 +1,18 @@
 return {
     "nvim-telescope/telescope.nvim",
 
-    tag = "0.1.5",
-
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
 
     config = function()
         local actions = require("telescope.actions")
+
         require("telescope").setup({
             pickers = {
                 find_files = {
                     find_command = { 'rg', '--no-ignore', '--files', '--hidden', '-g', '!.git', '-g', '!**/node_modules/*', '-g', '!*.lock', '-g', '!**zig-cache/*', '-g', '!**zig-out/*', },
-                    hidden = true
+                    hidden = true,
                 },
                 grep_string = {
                     additional_args = { '--no-ignore', "--hidden", '--files', '-g', '!.git', '-g', '!**/node_modules/*', '-g', '!*.lock', }
