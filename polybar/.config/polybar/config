@@ -372,11 +372,11 @@ click-left = blueman-manager
 
 [module/service]
 type = custom/script
-exec = ~/.config/polybar/vpn-prod.sh
+exec = ~/.config/polybar/vpn.sh status prodcentive
 interval = 5
-click-middle = ~/.config/polybar/vpn-prod.sh toggle &
-click-left =  ~/.config/polybar/vpn-prod.sh enable &
-click-right = ~/.config/polybar/vpn-prod.sh disable &
+click-middle = ~/.config/polybar/vpn.sh toggle prodcentive&
+click-left =  ~/.config/polybar/vpn.sh enable prodcentive&
+click-right = ~/.config/polybar/vpn.sh disable prodcentive&
 label = " %output% "
 format-background = ${colors.gray-ligth}
 format-foreground = ${colors.bg}
@@ -387,11 +387,11 @@ format-prefix-background = ${colors.red}
 
 [module/vpnservice]
 type = custom/script
-exec = ~/.config/polybar/vpn.sh
+exec = ~/.config/polybar/vpn.sh status easy-virus
 interval = 5
-click-middle = ~/.config/polybar/vpn.sh toggle &
-click-left =  ~/.config/polybar/vpn.sh enable &
-click-right = ~/.config/polybar/vpn.sh disable &
+click-middle = ~/.config/polybar/vpn.sh toggle easy-virus&
+click-left =  ~/.config/polybar/vpn.sh enable easy-virus&
+click-right = ~/.config/polybar/vpn.sh disable easy-virus&
 label = " %output% "
 format-background = ${colors.gray-ligth}
 format-foreground = ${colors.bg}

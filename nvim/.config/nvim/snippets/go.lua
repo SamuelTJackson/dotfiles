@@ -38,15 +38,26 @@ local transform = function(text, info)
             info.index = info.index + 1
 
             return c(info.index, {
-                t(string.format('fmt.Errorf("%s: %%v", %s)', info.func_name, info.err_name)),
-                t(info.err_name),
-                -- Be cautious with wrapping, it makes the error part of the API of the
-                -- function, see https://go.dev/blog/go1.13-errors#whether-to-wrap
-                t(string.format('fmt.Errorf("%s: %%w", %s)', info.func_name, info.err_name)),
-                -- Old style (pre 1.13, see https://go.dev/blog/go1.13-errors), using
-                -- https://github.com/pkg/errors
-                t(string.format('errors.Wrap(%s, "%s")', info.err_name, info.func_name)),
-            })
+                -- fmt.Errorf with cursor inside message string
+                sn(nil, {
+                    t('fmt.Errorf("'),
+                    i(1),
+                    t(': %w", err)'),
+                }),
+
+                -- Alternative with same pattern
+                sn(nil, {
+                    t('fmt.Errorf("'),
+                    i(1),
+                    t(': %w", err)'),
+                }),
+
+                -- pkg/errors.Wrap with cursor in message
+                sn(nil, {
+                    t('errors.Wrap(err, "'),
+                    i(1),
+                    t('")'),
+                }), })
         else
             return t "err"
         end
@@ -115,27 +126,15 @@ local go_ret_vals = function(args)
         nil,
         go_result_type {
             index = 0,
-            err_name = args[1][1],
-            func_name = args[2][1],
         }
     )
 end
 
 return {
     -- Adapted from https://github.com/tjdevries/config_manager/blob/1a93f03dfe254b5332b176ae8ec926e69a5d9805/xdg_config/nvim/lua/tj/snips/ft/go.lua
-    s("smart_err", {
-        i(1, { "val" }),
-        t ", ",
-        i(2, { "err" }),
-        t " := ",
-        i(3, { "f" }),
-        t "(",
-        i(4),
-        t ")",
-        t { "", "if " },
-        same(2),
-        t { " != nil {", "\treturn " },
-        d(5, go_ret_vals, { 2, 3 }),
+    s("if", {
+        t { "if err != nil {", "\treturn " },
+        d(1, go_ret_vals),
         t { "", "}" },
         i(0),
     }),

@@ -41,7 +41,7 @@ return {
         },
         formatters = {
             golines = {
-                args = { "-m", 140, "--base-formatter", "gofmt" }
+                args = { "-m", 140, "--base-formatter", "gofumpt" }
             }
 
         }
