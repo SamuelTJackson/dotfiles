@@ -19,7 +19,7 @@ return {
             init_options = { userLanguages = { templ = "html" } },
         })
         lspconfig.ts_ls.setup({})
-        --lspconfig.golangci_lint_ls.setup {}
+        lspconfig.golangci_lint_ls.setup {}
         lspconfig.typos_lsp.setup({})
         lspconfig.lua_ls.setup({
             capabilities = capabilities,
@@ -67,11 +67,11 @@ return {
                     gofumpt = false,
                     hints = {
                         assignVariableTypes = false,
-                        compositeLiteralFields = true,
-                        compositeLiteralTypes = true,
-                        constantValues = true,
+                        compositeLiteralFields = false,
+                        compositeLiteralTypes = false,
+                        constantValues = false,
                         functionTypeParameters = true,
-                        parameterNames = true,
+                        parameterNames = false,
                         rangeVariableTypes = true
                     },
                     ["local"] = "...",
