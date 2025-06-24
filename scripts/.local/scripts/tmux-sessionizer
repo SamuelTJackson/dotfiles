@@ -3,6 +3,7 @@
 static_projects=(
     "$HOME/.config/nvim"
     "$HOME/notes"
+    "run"
 )
 
 dynamic_projects=$(
