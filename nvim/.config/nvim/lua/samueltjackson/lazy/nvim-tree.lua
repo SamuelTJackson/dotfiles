@@ -3,6 +3,7 @@ local gheight = vim.api.nvim_list_uis()[1].height
 local width = 120
 local height = 20
 
+
 return {
     "nvim-tree/nvim-tree.lua",
     opts = {

@@ -4,11 +4,12 @@ static_projects=(
     "$HOME/.config/nvim"
     "$HOME/notes"
     "run"
+    "ssh-tunnel"
 )
 
 dynamic_projects=$(
     find \
-        ~/encentive \
+        ~/indicium \
         ~/legacy \
         ~/.config/nvim \
         ~/personal \

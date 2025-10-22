@@ -63,6 +63,10 @@ local transform = function(text, info)
         end
     elseif text == "bool" then
         return t "false"
+    elseif text == "any" then
+        return t "nil"
+    elseif text == "interface" then
+        return t "nil"
     elseif text == "string" then
         return t '""'
     elseif string.find(text, "*", 1, true) then

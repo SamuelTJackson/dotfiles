@@ -18,7 +18,7 @@ return {
             filetypes = { "templ", "astro", "javascript", "typescript", "react" },
             init_options = { userLanguages = { templ = "html" } },
         })
-        lspconfig.ts_ls.setup({})
+        --lspconfig.ts_ls.setup({})
         lspconfig.golangci_lint_ls.setup {}
         lspconfig.typos_lsp.setup({})
         lspconfig.lua_ls.setup({
