@@ -4,24 +4,25 @@ return {
         "saghen/blink.cmp",
     },
     config = function()
-        local capabilities = require('blink.cmp').get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
+        local capabilities                 = require('blink.cmp').get_lsp_capabilities(vim.lsp.protocol
+            .make_client_capabilities())
 
-        local lspconfig = require('lspconfig')
-        lspconfig.buf_ls.setup({
+        vim.lsp.config["buf_ls"]           = {
             capabilities = capabilities,
-        })
-        lspconfig.htmx.setup({
+        }
+        vim.lsp.config["htmx"]             = {
             capabilities = capabilities,
             filetypes = { "html", "templ" },
-        })
-        lspconfig.tailwindcss.setup({
+        }
+        vim.lsp.config["tailwindcss"]      = {
             filetypes = { "templ", "astro", "javascript", "typescript", "react" },
             init_options = { userLanguages = { templ = "html" } },
-        })
+        }
+
         --lspconfig.ts_ls.setup({})
-        lspconfig.golangci_lint_ls.setup {}
-        lspconfig.typos_lsp.setup({})
-        lspconfig.lua_ls.setup({
+        vim.lsp.config["golangci_lint_ls"] = {}
+        vim.lsp.config["typos_lsp"]        = {}
+        vim.lsp.config["lua_ls"]           = {
             capabilities = capabilities,
             settings = {
                 Lua = {
@@ -30,8 +31,8 @@ return {
                     },
                 },
             },
-        })
-        lspconfig.gopls.setup({
+        }
+        vim.lsp.config["gopls"]            = {
             on_attach = function()
                 vim.keymap.set("n", "<leader>t", "<cmd>GoTestFile<CR>")
                 vim.keymap.set("n", "<leader>fs", "<cmd>GoFillStruct<CR>")
@@ -82,6 +83,6 @@ return {
                     usePlaceholders = true
                 },
             },
-        })
+        }
     end
 }
