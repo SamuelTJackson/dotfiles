@@ -25,7 +25,7 @@ local prettier_ft = {
 }
 
 for _, filetype in pairs(prettier_ft) do
-    formatters[filetype] = { "prettierd" }
+    formatters[filetype] = { "prettierd", "biome" }
 end
 
 return {
@@ -35,14 +35,22 @@ return {
         formatters_by_ft = formatters,
         format_on_save = {
             -- These options will be passed to conform.format()
-            timeout_ms = 500,
+            timeout_ms = 1000,
             lsp_fallback = true,
         },
         formatters = {
             golines = {
                 args = { "-m", 140, "--base-formatter", "gofumpt" }
-            }
-
+            },
+            biome = {
+                require_cwd = true,
+            },
+            prettierd = {
+                require_cwd = true,
+            },
+            prettier = {
+                require_cwd = true,
+            },
         }
     },
 }
