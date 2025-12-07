@@ -141,4 +141,3 @@ setopt appendhistory
 
 export GOPRIVATE=github.com/encentive-energy
 eval "$(/home/samuel/.local/bin/mise activate zsh)"
-eval "$(direnv hook zsh)"

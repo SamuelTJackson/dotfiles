@@ -10,10 +10,8 @@ static_projects=(
 dynamic_projects=$(
     find \
         ~/indicium \
-        ~/legacy \
         ~/.config/nvim \
         ~/personal \
-        ~/GolandProjects \
         -type d -not -path '*/node_modules/*' -exec test -e '{}/.git' ';' -print -prune
 )
 
