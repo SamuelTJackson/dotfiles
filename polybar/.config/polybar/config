@@ -77,7 +77,7 @@ font-2 = "JetBrainsMono Nerd Font Mono:pixelsize=15:antialias=true;5"
 font-3 = "JetBrainsMono Nerd Font Mono:pixelsize=13:antialias=true;4"
 font-4 = "JetBrainsMono Nerd Font Mono:pixelsize=10:antialias=true;3"
 
-modules-left = i3 traysep monitor folder bluetooth microphone
+modules-left = i3 traysep monitor folder bluetooth microphone updates-pacman-aurhelper
 modules-center = date
 modules-right = memory cpu filesystem network battery pulseaudio date2 power
 
@@ -397,6 +397,18 @@ format-font = 5
 format-prefix = " "
 format-prefix-font = 4
 format-prefix-background = ${colors.green}
+
+[module/updates-pacman-aurhelper]
+type = custom/script
+exec = ~/.config/polybar/updates-pacman-aurhelper.sh
+interval = 600
+format-background = ${colors.gray-ligth}
+format-foreground = ${colors.bg}
+format-font = 5
+format-prefix = " "
+format-prefix-font = 4
+format-prefix-background = ${colors.yellow}
+click-left=kitty --name float_updates --class float_updates -e bash -c "yay -Syu; echo 'Press Enter to exit...'; read"
 
 [settings]
 screenchange-reload = true

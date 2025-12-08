@@ -247,3 +247,5 @@ for_window [class="Blueman-manager" instance="blueman-manager"] floating enable,
 for_window [class="dde-file-manager" instance="dde-file-manager"] floating enable, resize set 1200px 500px, move position center
 for_window [class="Arandr" instance="arandr"] floating enable, resize set 1920 400px, move position center
 for_window [class="Text Helper"] floating enable, resize set 800 400px, move position center
+for_window [class="float_updates"] floating enable, resize set 800px 500px, move position center
+
