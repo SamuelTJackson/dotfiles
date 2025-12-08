@@ -14,7 +14,7 @@ if type "xrandr"; then
         MONITOR=$m polybar --reload work &
     done
 else
-    sudo polybar --reload work &
+    polybar --reload work &
 fi
 
 echo "Polybar launched..."

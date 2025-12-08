@@ -61,7 +61,7 @@ bindsym $mod+l exec text-helper
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+F10 exec i3-sensible-terminal -e tmux
+bindsym $mod+F10 exec kitty -e zsh -c tmux
 
 # kill focused window
 bindsym $mod+q kill

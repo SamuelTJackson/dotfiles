@@ -3,6 +3,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 export EDITOR=nvim
 export TERMINAL=kitty
+export SHELL=/usr/bin/zsh
 export XCOMPOSEFILE=/tmp/compose
 export VISUAL='nvim'
 
@@ -87,7 +88,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
-export PATH="/home/samuel/.local/share/nvim/mason/bin:/home/samuel/.local/scripts:/home/samuel/.asdf/shims:$PATH"
+export PATH="/home/samuel/.cargo/bin:/home/samuel/.local/share/nvim/mason/bin:/home/samuel/.local/scripts:/home/samuel/.local/bin:$PATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8

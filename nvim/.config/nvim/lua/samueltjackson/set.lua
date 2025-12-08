@@ -31,7 +31,7 @@ vim.opt.updatetime = 50
 
 vim.opt.statusline = " %4n %t %{FugitiveStatusline()} %h%q%m%w %= Line %l of %L "
 vim.g.netrw_localrmdir = 'rm -r'
-vim.o.clipboard = 'unnamedplus'
+vim.opt.clipboard = 'unnamedplus'
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "tsx",
