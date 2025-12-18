@@ -142,3 +142,11 @@ setopt appendhistory
 
 export GOPRIVATE=github.com/encentive-energy
 eval "$(/home/samuel/.local/bin/mise activate zsh)"
+
+# pnpm
+export PNPM_HOME="/home/samuel/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

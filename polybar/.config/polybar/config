@@ -71,8 +71,8 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 1
 
-font-0 = "Fira Code Semibold:pixelsize=10;3"
-font-1 = "JetBrainsMono Nerd Font Mono:pixelsize=18:antialias=true;5"
+font-0 = "FiraCode Semibold:pixelsize=10;3"
+font-1 = "JetBrainsMonoNL Nerd Font Mono:pixelsize=18:antialias=true;5"
 font-2 = "JetBrainsMono Nerd Font Mono:pixelsize=15:antialias=true;5"
 font-3 = "JetBrainsMono Nerd Font Mono:pixelsize=13:antialias=true;4"
 font-4 = "JetBrainsMono Nerd Font Mono:pixelsize=10:antialias=true;3"
@@ -102,7 +102,7 @@ interval = 5.0
 
 label-disconnected = N/A
 format-connected = <label-connected>
-format-connected-prefix = "直"
+format-connected-prefix = "󰤨"
 format-connected-prefix-background = ${colors.orange}
 format-connected-prefix-padding = 1
 format-connected-background = ${colors.gray-ligth}
@@ -112,7 +112,7 @@ label-connected-padding = 1
 
 label-connected = %downspeed:0:8%
 format-disconnected = <label-disconnected>
-format-disconnected-prefix = "睊"
+format-disconnected-prefix = "󰤭"
 format-disconnected-prefix-background = ${colors.orange}
 format-disconnected-prefix-padding = 1
 format-disconnected-background = ${colors.gray-ligth}
@@ -204,10 +204,12 @@ label = %time%
 type = internal/date
 interval = 120
 
+locale = de_DE.UTF-8
+
 time = %a %m/%d
 label = %time%
 label-padding = 1
-format-prefix = 
+format-prefix = "󰃭"
 format-prefix-padding = 1
 format-prefix-font = 1
 format-prefix-background = ${colors.aqua}
@@ -222,7 +224,7 @@ label-font = 0
 type = internal/pulseaudio
 
 format-volume = <label-volume>
-format-volume-prefix = "墳"
+format-volume-prefix = ""
 format-volume-prefix-padding = 1
 format-volume-prefix-font = 1
 format-volume-prefix-background = ${colors.green}
@@ -234,7 +236,7 @@ label-volume-padding = 1
 label-volume-font = 0
 
 format-muted = <label-muted>
-format-muted-prefix = 婢
+format-muted-prefix = ""
 format-muted-prefix-padding = 1
 format-muted-prefix-font = 1
 format-muted-prefix-background = ${colors.green}
