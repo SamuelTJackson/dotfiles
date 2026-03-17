@@ -2,7 +2,7 @@ return {
 	"pmizio/typescript-tools.nvim",
 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 	opts = {
-		filetypes = { -- ← override the bad defaults
+		filetypes = {
 			"javascript",
 			"javascriptreact",
 			"typescript",

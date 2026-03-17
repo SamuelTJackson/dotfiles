@@ -4,25 +4,56 @@ return {
 		"saghen/blink.cmp",
 	},
 	config = function()
-		local capabilities = require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
+		local caps = require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-		vim.lsp.config["buf_ls"] = {
-			capabilities = capabilities,
-		}
-		vim.lsp.config["htmx"] = {
-			capabilities = capabilities,
+		vim.lsp.config("*", { capabilities = caps })
+
+		vim.lsp.config("buf_ls", {})
+
+		vim.lsp.config("htmx", {
 			filetypes = { "html", "templ" },
-		}
-		vim.lsp.config["tailwindcss"] = {
-			filetypes = { "templ", "astro", "javascript", "javascriptreact", "typescript", "typescriptreact" },
-			init_options = { userLanguages = { templ = "html" } },
-		}
+		})
 
-		--lspconfig.ts_ls.setup({})
-		vim.lsp.config["golangci_lint_ls"] = {}
-		vim.lsp.config["typos_lsp"] = {}
-		vim.lsp.config["lua_ls"] = {
-			capabilities = capabilities,
+		vim.lsp.config("tailwindcss", {
+			workspace_required = false,
+			cmd = { "tailwindcss-language-server", "--stdio" },
+			filetypes = { "astro", "javascript", "javascriptreact", "typescript", "typescriptreact", "html", "css" },
+			root_dir = function(bufnr, on_dir)
+				local fname = vim.api.nvim_buf_get_name(bufnr)
+				on_dir(vim.fs.root(fname, {
+					"tailwind.config.js",
+					"tailwind.config.ts",
+					"tailwind.config.cjs",
+				}) or vim.fs.root(fname, { ".git" }))
+			end,
+			settings = {
+				tailwindCSS = {
+					classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
+					includeLanguages = {
+						eelixir = "html-eex",
+						eruby = "erb",
+						htmlangular = "html",
+						templ = "html",
+					},
+					lint = {
+						cssConflict = "warning",
+						invalidApply = "error",
+						invalidConfigPath = "error",
+						invalidScreen = "error",
+						invalidTailwindDirective = "error",
+						invalidVariant = "error",
+						recommendedVariantOrder = "warning",
+					},
+					validate = true,
+				},
+			},
+		})
+
+		vim.lsp.config("golangci_lint_ls", {})
+
+		vim.lsp.config("typos_lsp", {})
+
+		vim.lsp.config("lua_ls", {
 			settings = {
 				Lua = {
 					diagnostics = {
@@ -30,14 +61,14 @@ return {
 					},
 				},
 			},
-		}
-		vim.lsp.config["gopls"] = {
+		})
+
+		vim.lsp.config("gopls", {
 			on_attach = function()
 				vim.keymap.set("n", "<leader>t", "<cmd>GoTestFile<CR>")
 				vim.keymap.set("n", "<leader>fs", "<cmd>GoFillStruct<CR>")
 				vim.keymap.set("n", "<leader>ta", "<cmd>GoAddTest<CR>")
 			end,
-			capabilities = capabilities,
 			settings = {
 				gopls = {
 					analyses = {
@@ -82,6 +113,16 @@ return {
 					usePlaceholders = true,
 				},
 			},
-		}
+		})
+
+		vim.lsp.enable({
+			"buf_ls",
+			"htmx",
+			"tailwindcss",
+			"golangci_lint_ls",
+			"typos_lsp",
+			"lua_ls",
+			"gopls",
+		})
 	end,
 }
