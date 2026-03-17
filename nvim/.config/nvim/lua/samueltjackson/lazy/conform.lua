@@ -1,35 +1,3 @@
-local function in_biome_project(bufnr)
-	local fname = vim.api.nvim_buf_get_name(bufnr)
-	local root = vim.fs.dirname(fname)
-	local biome_files = vim.fs.find({
-		"biome.json",
-		"biome.jsonc",
-		".biomerc",
-		".biomerc.json",
-	}, { upward = true, path = root })
-	return #biome_files > 0
-end
-
-local function in_prettier_project(bufnr)
-	local fname = vim.api.nvim_buf_get_name(bufnr)
-	local root = vim.fs.dirname(fname)
-	local prettier_files = vim.fs.find({
-		".prettierrc",
-		".prettierrc.json",
-		".prettierrc.yml",
-		".prettierrc.yaml",
-		".prettierrc.json5",
-		".prettierrc.js",
-		".prettierrc.cjs",
-		".prettierrc.mjs",
-		".prettierrc.toml",
-		"prettier.config.js",
-		"prettier.config.cjs",
-		"prettier.config.mjs",
-	}, { upward = true, path = root })
-	return #prettier_files > 0
-end
-
 local formatters = {
 	lua = { "stylua" },
 	go = { "golines", "goimports" },
