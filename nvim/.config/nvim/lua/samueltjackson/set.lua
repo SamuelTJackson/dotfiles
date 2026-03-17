@@ -30,13 +30,14 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.statusline = " %4n %t %{FugitiveStatusline()} %h%q%m%w %= Line %l of %L "
-vim.g.netrw_localrmdir = 'rm -r'
-vim.opt.clipboard = 'unnamedplus'
+vim.g.netrw_localrmdir = "rm -r"
+vim.opt.clipboard = "unnamedplus"
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "tsx",
-    callback = function()
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.tabstop = 2
-    end
+	pattern = "tsx",
+	callback = function()
+		vim.opt_local.shiftwidth = 2
+		vim.opt_local.tabstop = 2
+	end,
 })
+vim.opt.conceallevel = 1

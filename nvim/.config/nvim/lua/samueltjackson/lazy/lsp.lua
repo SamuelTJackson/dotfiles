@@ -123,6 +123,7 @@ return {
 			"typos_lsp",
 			"lua_ls",
 			"gopls",
+			"marksman",
 		})
 	end,
 }

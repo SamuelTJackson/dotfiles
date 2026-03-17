@@ -14,6 +14,7 @@ return {
 			"prettierd",
 			"stylua",
 			"typescript-language-server",
+			"marksman",
 		}
 
 		registry.refresh(function()

@@ -88,7 +88,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
-export PATH="/home/samuel/.cargo/bin:/home/samuel/.local/share/nvim/mason/bin:/home/samuel/.local/scripts:/home/samuel/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.local/share/nvim/mason/bin:$HOME/.local/scripts:$HOME/.local/bin:$PATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -129,7 +129,7 @@ alias gitclean="git fetch -p && for branch in \$(git for-each-ref --format '%(re
 export DOCKER_BUILDKIT=1
 
 
-[[ -s "/home/samuel/.gvm/scripts/gvm" ]] && source "/home/samuel/.gvm/scripts/gvm"
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 # if [ "$TMUX" = "" ]; then tmux new \; set-option destroy-unattached; fi
 bindkey -s ^f "tmux-sessionizer\n"
@@ -141,10 +141,9 @@ SAVEHIST=100000
 setopt appendhistory
 
 export GOPRIVATE=github.com/encentive-energy
-eval "$(/home/samuel/.local/bin/mise activate zsh)"
 
 # pnpm
-export PNPM_HOME="/home/samuel/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -154,3 +153,6 @@ esac
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+eval "$($HOME/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
+eval "$(luarocks path)"
