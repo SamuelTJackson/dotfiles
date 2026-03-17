@@ -77,7 +77,7 @@ font-2 = "JetBrainsMono Nerd Font Mono:pixelsize=15:antialias=true;5"
 font-3 = "JetBrainsMono Nerd Font Mono:pixelsize=13:antialias=true;4"
 font-4 = "JetBrainsMono Nerd Font Mono:pixelsize=10:antialias=true;3"
 
-modules-left = i3 traysep monitor folder bluetooth microphone updates-pacman-aurhelper
+modules-left = i3 traysep monitor folder bluetooth microphone updates-pacman-aurhelper wireguard
 modules-center = date
 modules-right = memory cpu filesystem network battery pulseaudio date2 power
 
@@ -204,7 +204,6 @@ label = %time%
 type = internal/date
 interval = 120
 
-locale = de_DE.UTF-8
 
 time = %a %m/%d
 label = %time%
@@ -411,6 +410,19 @@ format-prefix = " "
 format-prefix-font = 4
 format-prefix-background = ${colors.yellow}
 click-left=kitty --name float_updates --class float_updates -e bash -c "yay -Syu; echo 'Press Enter to exit...'; read"
+
+[module/wireguard]
+type = custom/script
+exec = /home/samuel/.config/polybar/polybar-wireguard
+tail = false
+interval = 1
+click-left = /home/samuel/.config/polybar/polybar-wireguard --toggle &
+format-background = ${colors.gray-ligth}
+format-foreground = ${colors.bg}
+format-font = 5
+format-prefix = " "
+format-prefix-font = 4
+format-prefix-background = ${colors.yellow}
 
 [settings]
 screenchange-reload = true

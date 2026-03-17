@@ -1,0 +1,54 @@
+#!/usr/bin/env sh
+
+# Unfortunately it's not easy to directly use Polybar colour values in this
+# script so I have to redefine some of my colours here. See the link below for
+# more details:
+# https://github.com/polybar/polybar/wiki/Formatting#format-tags-inside-polybar-config
+green=#55aa55
+
+configs_path="/home/samuel/.config/wg"
+connected_interface=$(networkctl | grep -P "\d+ .* wireguard" -o | cut -d" " -f2)
+
+connect() {
+    selected_config=$(ls $configs_path/*.conf | xargs basename -a -s .conf | rofi -dmenu)
+    [[ $selected_config ]] && sudo wg-quick up "$configs_path"/"$selected_config".conf
+}
+
+disconnect() {
+    for connected_config in $(networkctl | grep -P "\d+ .* wireguard" -o | cut -d" " -f2)
+    do
+        sudo wg-quick down $configs_path/"$connected_config".conf
+    done
+}
+
+toggle() {
+    if [[ $connected_interface ]]
+    then
+        disconnect
+    else
+        connect
+    fi
+}
+
+print() {
+    if [[ $connected_interface ]]
+    then echo %{T4}%{F"$green"} 󰖂 %{T-}"$connected_interface" %{F-}
+    else
+        echo %{T4} 󰖂 %{T-}
+    fi
+}
+
+case "$1" in
+    --connect)
+        connect
+        ;;
+    --disconnect)
+        disconnect
+        ;;
+    --toggle)
+        toggle
+        ;;
+    *)
+        print
+        ;;
+esac

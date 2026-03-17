@@ -11,8 +11,38 @@ dynamic_projects=$(
     find \
         ~/indicium \
         ~/.config/nvim \
-        ~/personal \
-        -type d -not -path '*/node_modules/*' -exec test -e '{}/.git' ';' -print -prune
+        \( \
+            -name '.git'          \
+            -o -name 'node_modules' \
+            -o -name 'target'     \
+            -o -name 'vendor'     \
+            -o -name 'dist'       \
+            -o -name 'build'      \
+            -o -name '.next'      \
+            -o -name '.nuxt'      \
+            -o -name '.venv'      \
+            -o -name 'venv'       \
+            -o -name 'env'        \
+            -o -name '__pycache__' \
+            -o -name '.mypy_cache' \
+            -o -name '.pytest_cache' \
+            -o -name '.ruff_cache' \
+            -o -name '.ruff_cache' \
+        \) -prune \
+        -o -type d -exec sh -c '
+            for marker in \
+                .git         \
+                go.mod       \
+                Cargo.toml   \
+                package.json \
+                pyproject.toml \
+                setup.py     \
+                Pipfile      \
+            ; do
+                [ -e "$1/$marker" ] && exit 0
+            done
+            exit 1
+        ' _ {} \; -print -prune
 )
 
 selected=$(printf "%s\n" "${static_projects[@]}" $dynamic_projects | fzf)
